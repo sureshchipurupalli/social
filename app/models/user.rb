@@ -18,11 +18,13 @@ class User < ActiveRecord::Base
     def from_omniauth(auth_hash)
       user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
       user.name = auth_hash['info']['name']
-      user.location = get_social_location_for user.provider, auth_hash['info']['location']
+     # user.location = get_social_location_for user.provider, auth_hash['info']['location']
       user.image_url = auth_hash['info']['image']
       user.url = get_social_url_for user.provider, auth_hash['info']['urls']
+     # user.oauth_token = auth.credentials.token
       user.save!
       user
+   
     end
 
     private
@@ -40,7 +42,7 @@ class User < ActiveRecord::Base
       case provider
         when 'linkedin'
           urls_hash['public_profile']
-        else
+       else
           urls_hash[provider.capitalize]
       end
     end
