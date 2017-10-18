@@ -16,7 +16,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
            scope: "email,profile", prompt: "select_account",  image_aspect_ratio: 'square', image_size: 48, access_type: 'online', name: 'google',
            access_type: "offline", skip_jwt: true, info_fields: 'id,name,link'
 
-  provider :linkedin, "811sfh8hnyr0dg",  "Pe2wtfRbt7mCJNdF",
+ 
           # scope: 'r_basicprofile', info_fields: 'id,name,link'
           #fields: ['id', 'first-name', 'last-name', 'location', 'picture-url', 'public-profile-url']
 
