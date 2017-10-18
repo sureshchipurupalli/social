@@ -29,7 +29,10 @@ gem "omniauth-google-oauth2"
 gem 'omniauth-linkedin-oauth2'
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6cf6e2d3ca1a07bd0bd1a70067f7c7b6baa5752b
 group :development, :test do
   gem 'sqlite3'
 end
