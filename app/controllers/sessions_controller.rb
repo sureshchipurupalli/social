@@ -2,7 +2,9 @@ class SessionsController < ApplicationController
   def create
     #render text: request.env['omniauth.auth'].to_yaml and return
     begin
+      raise request.env['omniauth.auth'].to_yaml
       @user = User.from_omniauth(request.env['omniauth.auth'])
+      puts @user
       session[:user_id] = @user.id
       flash[:success] = "Welcome, #{@user.name}!"
     rescue

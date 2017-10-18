@@ -5,12 +5,12 @@ Rails.application.config.middleware.use OmniAuth::Builder do
             scope: 'public_profile', info_fields: 'id,name,link'
 
   provider :google_oauth2, "144260308654-viqjoqr954po297ke1tb5auidlvttanr.apps.googleusercontent.com",  "BvwwEDi0N9Q4EdQtdAKlw7Zy",
-           scope: 'profile', image_aspect_ratio: 'square', image_size: 48, access_type: 'online', name: 'google',
-           access_type: "offline", skip_jwt: true
+           scope: "email,profile", prompt: "select_account",  image_aspect_ratio: 'square', image_size: 48, access_type: 'online', name: 'google',
+           access_type: "offline", skip_jwt: true, info_fields: 'id,name,link'
 
   provider :linkedin, "811sfh8hnyr0dg",  "Pe2wtfRbt7mCJNdF",
-           scope: 'r_basicprofile',
-           fields: ['id', 'first-name', 'last-name', 'location', 'picture-url', 'public-profile-url']
+          # scope: 'r_basicprofile', info_fields: 'id,name,link'
+          #fields: ['id', 'first-name', 'last-name', 'location', 'picture-url', 'public-profile-url']
 
   OmniAuth.config.on_failure = Proc.new do |env|
     SessionsController.action(:auth_failure).call(env)
